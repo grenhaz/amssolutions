@@ -19,8 +19,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 import com.amssolutions.prueba.BaseTest;
 import com.amssolutions.prueba.service.adapter.dto.ProductDetailBusiness;
 import com.amssolutions.prueba.service.adapter.exception.ProductBusinessNotFoundException;
-import com.amssolutions.prueba.service.adapter.exception.WebServiceBusinessException;
-import com.amssolutions.prueba.service.webclient.ProductApiWebClient;
+import com.amssolutions.prueba.service.adapter.exception.WebServiceResponseBusinessException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import okhttp3.mockwebserver.MockResponse;
@@ -108,11 +107,11 @@ class ProductApiWebClientTest extends BaseTest {
         
         mockBackEnd.enqueue(new MockResponse().setResponseCode(500));
 		
-		assertThrows(WebServiceBusinessException.class, () -> productApiWebClient.getSimilarProducts(PRODUCT_ID));
+		assertThrows(WebServiceResponseBusinessException.class, () -> productApiWebClient.getSimilarProducts(PRODUCT_ID));
 		
 		mockBackEnd.enqueue(new MockResponse().setResponseCode(500));
 		
-		assertThrows(WebServiceBusinessException.class, () -> productApiWebClient.getProductDetail(PRODUCT_ID));
+		assertThrows(WebServiceResponseBusinessException.class, () -> productApiWebClient.getProductDetail(PRODUCT_ID));
 	}
 	
 	@Test
@@ -120,11 +119,11 @@ class ProductApiWebClientTest extends BaseTest {
 		
 		mockBackEnd.enqueue(new MockResponse().setSocketPolicy(SocketPolicy.DISCONNECT_AT_START));
 		
-		assertThrows(WebServiceBusinessException.class, () -> productApiWebClient.getSimilarProducts(PRODUCT_ID));
+		assertThrows(WebServiceResponseBusinessException.class, () -> productApiWebClient.getSimilarProducts(PRODUCT_ID));
 		
 		mockBackEnd.enqueue(new MockResponse().setSocketPolicy(SocketPolicy.DISCONNECT_AT_START));
 		
-		assertThrows(WebServiceBusinessException.class, () -> productApiWebClient.getProductDetail(PRODUCT_ID));
+		assertThrows(WebServiceResponseBusinessException.class, () -> productApiWebClient.getProductDetail(PRODUCT_ID));
 	}
 	
 }

@@ -11,7 +11,8 @@ import com.amssolutions.prueba.exception.WebServiceException;
 import com.amssolutions.prueba.service.IProductService;
 import com.amssolutions.prueba.service.adapter.IProductWebClientAdapter;
 import com.amssolutions.prueba.service.adapter.exception.ProductBusinessNotFoundException;
-import com.amssolutions.prueba.service.adapter.exception.WebServiceBusinessException;
+import com.amssolutions.prueba.service.adapter.exception.WebServiceRequestBusinessException;
+import com.amssolutions.prueba.service.adapter.exception.WebServiceResponseBusinessException;
 import com.amssolutions.prueba.service.mapper.IProductDetailMapper;
 
 import lombok.AllArgsConstructor;
@@ -44,7 +45,7 @@ public class ProductServiceImpl implements IProductService {
 			}
 			
 			return list;
-		} catch (WebServiceBusinessException wsEx) {
+		} catch (WebServiceRequestBusinessException | WebServiceResponseBusinessException wsEx) {
 			throw new WebServiceException(wsEx.getMessage());
 		} catch (ProductBusinessNotFoundException notFoundEx) {
 			throw new ProductNotFoundException();

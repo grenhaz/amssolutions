@@ -4,7 +4,8 @@ import java.util.List;
 
 import com.amssolutions.prueba.service.adapter.dto.ProductDetailBusiness;
 import com.amssolutions.prueba.service.adapter.exception.ProductBusinessNotFoundException;
-import com.amssolutions.prueba.service.adapter.exception.WebServiceBusinessException;
+import com.amssolutions.prueba.service.adapter.exception.WebServiceRequestBusinessException;
+import com.amssolutions.prueba.service.adapter.exception.WebServiceResponseBusinessException;
 
 /**
  * Product adapter.
@@ -19,10 +20,11 @@ public interface IProductWebClientAdapter {
 	 * @param productId Product id.
 	 * @return List of id's.
 	 * @throws ProductBusinessNotFoundException
-	 * @throws WebServiceBusinessException
+	 * @throws WebServiceRequestBusinessException
+	 * @throws WebServiceResponseBusinessException
 	 */
 	List<String> getSimilarProducts(String productId) 
-			throws ProductBusinessNotFoundException, WebServiceBusinessException;
+			throws ProductBusinessNotFoundException, WebServiceRequestBusinessException, WebServiceResponseBusinessException;
 	
 	/**
 	 * Get product details by id.
@@ -30,9 +32,9 @@ public interface IProductWebClientAdapter {
 	 * @param productId Product id.
 	 * @return Product details.
 	 * @throws ProductBusinessNotFoundException
-	 * @throws WebServiceBusinessException
+	 * @throws WebServiceResponseBusinessException
 	 */
 	ProductDetailBusiness getProductDetails(String productId) 
-			throws ProductBusinessNotFoundException, WebServiceBusinessException;
+			throws ProductBusinessNotFoundException, WebServiceRequestBusinessException, WebServiceResponseBusinessException;
 	
 }

@@ -22,7 +22,7 @@ import com.amssolutions.prueba.service.IProductService;
 import com.amssolutions.prueba.service.adapter.IProductWebClientAdapter;
 import com.amssolutions.prueba.service.adapter.dto.ProductDetailBusiness;
 import com.amssolutions.prueba.service.adapter.exception.ProductBusinessNotFoundException;
-import com.amssolutions.prueba.service.adapter.exception.WebServiceBusinessException;
+import com.amssolutions.prueba.service.adapter.exception.WebServiceResponseBusinessException;
 import com.amssolutions.prueba.service.mapper.IProductDetailMapper;
 
 @SpringBootTest
@@ -68,7 +68,7 @@ class ProductServiceImplTest extends BaseTest {
 	@Test
 	void testGetSimilarProductDetailsFromProductIdThrowWebServiceException() throws Exception {
 		
-		Mockito.when(productWebClientAdapter.getSimilarProducts(PRODUCT_ID)).thenThrow(WebServiceBusinessException.class);
+		Mockito.when(productWebClientAdapter.getSimilarProducts(PRODUCT_ID)).thenThrow(WebServiceResponseBusinessException.class);
 		
 		assertThrows(WebServiceException.class, () -> productService.getSimilarProducts(PRODUCT_ID));
 	}
