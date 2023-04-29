@@ -10,12 +10,14 @@ import com.amssolutions.prueba.exception.ProductNotFoundException;
 import com.amssolutions.prueba.exception.WebServiceException;
 
 import jakarta.validation.ConstraintViolationException;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Api controller handler.
  * 
  * @author obarcia
  */
+@Slf4j
 @ControllerAdvice
 public class RestResponseExceptionHandler {
 
@@ -26,6 +28,7 @@ public class RestResponseExceptionHandler {
 	
 	@ExceptionHandler(WebServiceException.class)
 	ResponseEntity<Void> webServiceErrorHandler(final WebServiceException ex) {
+		log.error("Web service error", ex);
 		return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	

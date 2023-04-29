@@ -7,7 +7,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import com.amssolutions.prueba.webclient.ProductApiWebClient;
+import com.amssolutions.prueba.service.webclient.ProductApiWebClient;
 
 /**
  * External web service configuration.

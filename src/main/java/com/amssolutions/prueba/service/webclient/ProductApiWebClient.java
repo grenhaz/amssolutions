@@ -1,12 +1,12 @@
-package com.amssolutions.prueba.webclient;
+package com.amssolutions.prueba.service.webclient;
 
 import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClientRequestException;
+import org.springframework.web.reactive.function.client.WebClientResponseException;
 
 import com.amssolutions.prueba.service.adapter.dto.ProductDetailBusiness;
 import com.amssolutions.prueba.service.adapter.exception.ProductBusinessNotFoundException;
@@ -44,10 +44,9 @@ public class ProductApiWebClient {
 					.uri(ENDPOINT_PRODUCT_SIMILAR, productId)
 				    .retrieve()
 				    .onStatus(HttpStatus.NOT_FOUND::equals, clientResponse -> Mono.error(ProductBusinessNotFoundException::new))
-				    .onStatus(HttpStatusCode::isError, clientResponse -> Mono.error(WebServiceBusinessException::new))
 				    .bodyToMono(String[].class)
 				    .block());
-		} catch (WebClientRequestException ex) {
+		} catch (WebClientRequestException | WebClientResponseException ex) {
 			throw new WebServiceBusinessException(ex);
 		}
 	}
@@ -67,10 +66,9 @@ public class ProductApiWebClient {
 					.uri(ENDPOINT_PRODUCT_DETAILS, productId)
 					.retrieve()
 				    .onStatus(HttpStatus.NOT_FOUND::equals, clientResponse -> Mono.error(ProductBusinessNotFoundException::new))
-				    .onStatus(HttpStatusCode::isError, clientResponse -> Mono.error(WebServiceBusinessException::new))
 					.bodyToMono(ProductDetailBusiness.class)
 					.block();
-		} catch (WebClientRequestException ex) {
+		} catch (WebClientRequestException | WebClientResponseException ex) {
 			throw new WebServiceBusinessException(ex);
 		}
 	}

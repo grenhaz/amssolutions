@@ -15,7 +15,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import com.amssolutions.prueba.BaseTest;
 import com.amssolutions.prueba.service.adapter.IProductWebClientAdapter;
 import com.amssolutions.prueba.service.adapter.dto.ProductDetailBusiness;
-import com.amssolutions.prueba.webclient.ProductApiWebClient;
+import com.amssolutions.prueba.service.webclient.ProductApiWebClient;
 
 @SpringBootTest
 class ProductWebClientAdapterImplTest extends BaseTest {

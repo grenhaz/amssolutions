@@ -9,7 +9,7 @@ import com.amssolutions.prueba.service.adapter.IProductWebClientAdapter;
 import com.amssolutions.prueba.service.adapter.dto.ProductDetailBusiness;
 import com.amssolutions.prueba.service.adapter.exception.ProductBusinessNotFoundException;
 import com.amssolutions.prueba.service.adapter.exception.WebServiceBusinessException;
-import com.amssolutions.prueba.webclient.ProductApiWebClient;
+import com.amssolutions.prueba.service.webclient.ProductApiWebClient;
 
 import lombok.AllArgsConstructor;
 

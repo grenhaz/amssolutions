@@ -13,6 +13,10 @@ public class WebServiceBusinessException extends RuntimeException {
 		super();
 	}
 	
+	public WebServiceBusinessException(String message) {
+		super(message);
+	}
+	
 	public WebServiceBusinessException(Throwable cause) {
 		super(cause);
 	}

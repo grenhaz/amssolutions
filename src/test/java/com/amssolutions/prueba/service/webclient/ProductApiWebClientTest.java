@@ -1,4 +1,4 @@
-package com.amssolutions.prueba.webclient;
+package com.amssolutions.prueba.service.webclient;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -20,7 +20,7 @@ import com.amssolutions.prueba.BaseTest;
 import com.amssolutions.prueba.service.adapter.dto.ProductDetailBusiness;
 import com.amssolutions.prueba.service.adapter.exception.ProductBusinessNotFoundException;
 import com.amssolutions.prueba.service.adapter.exception.WebServiceBusinessException;
-import com.amssolutions.prueba.webclient.ProductApiWebClient;
+import com.amssolutions.prueba.service.webclient.ProductApiWebClient;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import okhttp3.mockwebserver.MockResponse;

@@ -45,7 +45,7 @@ public class ProductServiceImpl implements IProductService {
 			
 			return list;
 		} catch (WebServiceBusinessException wsEx) {
-			throw new WebServiceException();
+			throw new WebServiceException(wsEx.getMessage());
 		} catch (ProductBusinessNotFoundException notFoundEx) {
 			throw new ProductNotFoundException();
 		}

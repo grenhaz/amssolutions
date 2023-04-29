@@ -1,23 +1,12 @@
 package com.amssolutions.prueba;
 
-import static org.mockito.ArgumentMatchers.notNull;
-import static org.mockito.Mockito.when;
-
 import java.math.BigDecimal;
-import java.util.List;
 
-import org.mockito.ArgumentMatchers;
-import org.mockito.Mockito;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.web.reactive.function.client.WebClient;
-import org.springframework.web.reactive.function.client.WebClient.RequestHeadersSpec;
-import org.springframework.web.reactive.function.client.WebClient.RequestHeadersUriSpec;
-import org.springframework.web.reactive.function.client.WebClient.ResponseSpec;
 
 import com.amssolutions.prueba.api.dto.ProductDetail;
 import com.amssolutions.prueba.service.adapter.dto.ProductDetailBusiness;
-
-import reactor.core.publisher.Mono;
 
 public class BaseTest {
 	
@@ -77,31 +66,4 @@ public class BaseTest {
 		return product;
 	}
 	
-	protected void mockWebClient(final List<String> response) {
-	    final RequestHeadersUriSpec uriSpecMock = Mockito.mock(WebClient.RequestHeadersUriSpec.class);
-	    final RequestHeadersSpec headersSpecMock = Mockito.mock(WebClient.RequestHeadersSpec.class);
-	    final ResponseSpec responseSpecMock = Mockito.mock(WebClient.ResponseSpec.class);
-
-	    when(productWebClient.get()).thenReturn(uriSpecMock);
-	    when(uriSpecMock.uri(ArgumentMatchers.<String>notNull())).thenReturn(headersSpecMock);
-	    when(headersSpecMock.header(notNull(), notNull())).thenReturn(headersSpecMock);
-	    when(headersSpecMock.headers(notNull())).thenReturn(headersSpecMock);
-	    when(headersSpecMock.retrieve()).thenReturn(responseSpecMock);
-	    when(responseSpecMock.bodyToMono(ArgumentMatchers.<Class<String[]>>notNull()))
-	            .thenReturn(Mono.just(response.toArray(new String[response.size()])));
-	}
-	
-	protected void mockWebClient(final ProductDetailBusiness response) {
-	    final RequestHeadersUriSpec uriSpecMock = Mockito.mock(WebClient.RequestHeadersUriSpec.class);
-	    final RequestHeadersSpec headersSpecMock = Mockito.mock(WebClient.RequestHeadersSpec.class);
-	    final ResponseSpec responseSpecMock = Mockito.mock(WebClient.ResponseSpec.class);
-
-	    when(productWebClient.get()).thenReturn(uriSpecMock);
-	    when(uriSpecMock.uri(ArgumentMatchers.<String>notNull())).thenReturn(headersSpecMock);
-	    when(headersSpecMock.header(notNull(), notNull())).thenReturn(headersSpecMock);
-	    when(headersSpecMock.headers(notNull())).thenReturn(headersSpecMock);
-	    when(headersSpecMock.retrieve()).thenReturn(responseSpecMock);
-	    when(responseSpecMock.bodyToMono(ArgumentMatchers.<Class<ProductDetailBusiness>>notNull()))
-	            .thenReturn(Mono.just(response));
-	}
 }
